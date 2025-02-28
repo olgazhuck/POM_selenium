@@ -85,3 +85,28 @@ class CreateNewCustomer:
             )
         assert error_message.text == validation_text, \
             f"Field {locator[1]} has no validation message"
+
+    def check_first_name_empty_validation_text(self, validation_text):
+        self.check_required_empty_fields(
+            validation_text, loc.first_name_error_locator
+            )
+
+    def check_last_name_empty_validation_text(self, validation_text):
+        self.check_required_empty_fields(
+            validation_text, loc.last_name_error_locator
+            )
+
+    def check_email_empty_validation_text(self, validation_text):
+        self.check_required_empty_fields(
+            validation_text, loc.email_error_locator
+            )
+
+    def check_password_validation_text(self, validation_text):
+        self.check_required_empty_fields(
+            validation_text, loc.password_error_locator
+            )
+
+    def check_confirm_password_validation_text(self, validation_text):
+        self.check_required_empty_fields(
+            validation_text, loc.confirm_password_error_locator
+            )

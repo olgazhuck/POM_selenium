@@ -1,7 +1,3 @@
-from pages.locators import create_acc_locators as loc
-from pages.locators import sale_page_locators as sale
-
-
 # create account tests
 def test_create_account_with_invalid_email(create_new_customer):
     create_new_customer.open_page()
@@ -34,48 +30,32 @@ def test_validation_messages_empty_fields(create_new_customer):
     create_new_customer.fill_create_account_form(
         "", "", "", "", ""
     )
-    create_new_customer.check_required_empty_fields(
-        validation_text, loc.first_name_error_locator
-    )
-    create_new_customer.check_required_empty_fields(
-        validation_text, loc.last_name_error_locator
-    )
-    create_new_customer.check_required_empty_fields(
-        validation_text, loc.email_error_locator
-    )
-    create_new_customer.check_required_empty_fields(
-        validation_text, loc.password_error_locator
-    )
-    create_new_customer.check_required_empty_fields(
-        validation_text, loc.confirm_password_error_locator
-    )
+    create_new_customer.check_first_name_empty_validation_text(validation_text)
+    create_new_customer.check_last_name_empty_validation_text(validation_text)
+    create_new_customer.check_email_empty_validation_text(validation_text)
+    create_new_customer.check_password_validation_text(validation_text)
+    create_new_customer.check_confirm_password_validation_text(validation_text)
 
 
 # Sales page tests
 def test_header_title(sale_page):
     sale_page.open_page()
-    sale_page.check_deals("Women's Deals", sale.women_deals_locator)
-    sale_page.check_deals("Mens's Deals", sale.men_deals_locator)
-    sale_page.check_deals("Gear Deals", sale.gear_deals_locator)
+    sale_page.check_women_deals("Women's Deals")
+    sale_page.check_men_deals("Mens's Deals")
+    sale_page.check_gear_deals("Gear Deals")
 
 
 def test_women_menu_items(sale_page):
     sale_page.open_page()
-    sale_page.check_deals(
-        "Hoodies and Sweatshirts", sale.women_hoodies_locator
-        )
-    sale_page.check_deals("Jackets", sale.women_jackets_locator)
-    sale_page.check_deals("Tees", sale.women_tees_locator)
-    sale_page.check_deals("Bras & Tanks", sale.women_bra_locator)
-    sale_page.check_deals("Pants", sale.women_pants_locator)
-    sale_page.check_deals("Shorts", sale.women_shorts_locator)
+    sale_page.check_women_menu_sweaters("Hoodies and Sweatshirts")
+    sale_page.check_women_menu_jackets("Jackets")
+    sale_page.check_women_menu_pants("Pants")
+    sale_page.check_women_menu_shorts("Shorts")
 
 
 def test_hoodies_deal(sale_page):
     sale_page.open_page()
-    sale_page.check_menu(
-        "Hoodies & Sweatshirts", sale.women_hoodies_locator, sale.h1
-        )
+    sale_page.check_hoodies_deal("Hoodies & Sweatshirts")
 
 
 # eco friendly tests

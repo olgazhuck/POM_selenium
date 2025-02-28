@@ -4,6 +4,7 @@ from pages.sale_page import SalePage
 from pages.create_new_customer import CreateNewCustomer
 from pages.eco_friendly import EcoFriendlyPage
 
+
 @pytest.fixture()
 def driver():
     chrome_driver = webdriver.Chrome()
@@ -26,4 +27,3 @@ def create_new_customer(driver):
 @pytest.fixture()
 def eco_friendly(driver):
     return EcoFriendlyPage(driver)
-
